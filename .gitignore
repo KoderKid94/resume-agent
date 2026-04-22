@@ -1,0 +1,24 @@
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+# Python (extended)
+venv/
+*.egg-info/
+
+# Sensitive personal data — never commit
+reference/master_resume.md
+application_tracker.md
+jobs/
+resumes/
+
+# Editor / OS cruft
+.vscode/
+.idea/
+*.swp
+
+# Local environment
+.env
+
+# Claude Code local state (contains project-specific tool permissions / paths)
+.claude/
