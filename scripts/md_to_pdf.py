@@ -12,20 +12,27 @@ Strategy:
 5. Write final PDF
 
 Weights (higher = more protected, removed last):
-  10 = name, contact, section headers       — never removed
-   9 = summary                              — never removed
-   8 = project 1 header/meta               — most relevant project, never removed
-   7 = project 1 bullets                   — protected
-   6 = project 2 header/meta               — protected
-   5 = project 2 bullets                   — protected
-   4 = project 3 bullets
-   3 = military bullets                    — after projects are trimmed
-   2 = project 4+ bullets / coursework     — removed first
-   1 = project 4+ headers (entire block)   — removed after bullets exhausted
+  10 = name, contact, section headers         — never removed
+   8 = project 1 header/meta                   — most relevant project, never removed
+   7 = project 1 bullets                       — protected
+   6 = education entries, project 2 hdr/meta   — education is the qualifying
+                                                 credential; entries never removed
+   5 = project 2 bullets                       — protected
+   4 = project 3 hdr/meta, military hdr/meta   — entries never removed
+   3 = project 3 bullets, military bullets     — trimmed after low-trust content
+   2 = skills lines, coursework, summary body  — trimmed first
+   1 = project 4+ headers (entire block)       — removed after bullets exhausted
 
-NOTE: Projects outrank military experience in the weight system because
-projects ARE the CS credential for a new grad. Military is always included
-but is trimmed before project 1 and 2 content.
+NOTE: Section order in the rendered PDF follows the markdown source order
+(Summary -> Education -> Projects -> Experience -> Technical Skills). These
+weights only decide WHAT GETS TRIMMED when content overflows one page — not
+section order. Priorities reflect the 2026-06-06 ordering decision:
+  - Education is the qualifying credential for a new grad -> protected near the
+    top, never removed.
+  - Projects are the primary evidence of ability -> they outrank military
+    experience, which is always included but trimmed before project 1/2 content.
+  - A self-reported skills list is a low-trust signal (and ATS parses keywords
+    regardless of placement) -> skills lines are trimmed first.
 """
 
 import sys

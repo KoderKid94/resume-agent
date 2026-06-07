@@ -24,13 +24,16 @@ The longer narrative — design rationale, the render-and-measure one-page guara
 
 Every output resume MUST use this section order, every time — regardless of the order in `master_resume.md`:
 
-**Summary → Technical Skills → Projects → Experience → Education**
+**Summary → Education → Projects → Experience → Technical Skills**
 
-(The name + contact header always sits at the very top, above Summary.)
+(The name + contact header always sits at the very top, above Summary. "Technical Skills" is the skills list — it goes last.)
 
-The rule that matters most: **Projects come BEFORE Experience.** This candidate is a new CS grad with no CS work history, so projects are the strongest proof of ability and must reach the recruiter before the military background does. Military experience belongs in the Experience section, *below* Projects. The PDF converter's content-weight system in `scripts/md_to_pdf.py` enforces this same priority.
+Rationale for this order (decided 2026-06-06):
+- **Education near the top.** As a new grad, the degree is the qualifying credential. Putting Education directly under the Summary lets a recruiter verify the degree and grad date instantly, before reading further.
+- **Projects in the top half.** Projects remain the primary evidence of ability — demonstrated, build-it-yourself proof — so they sit above Experience. Military experience belongs in the Experience section, *below* Projects.
+- **Skills at the bottom.** A self-reported skills list is a low-trust signal compared to demonstrated work, so it goes last. This costs nothing for ATS: keyword matching parses the whole document regardless of section placement.
 
-If Experience appears before Projects, that is a critical error — rewrite the resume before running the PDF converter.
+If the order deviates from Summary → Education → Projects → Experience → Technical Skills, that is a critical error — rewrite the resume before running the PDF converter.
 
 ---
 
@@ -117,7 +120,7 @@ source .venv/bin/activate 2>/dev/null || (python3 -m venv .venv && source .venv/
 8. Write the tailored resume using the OUTPUT FORMAT defined below
 9. Create folder: resumes/[Company]_[Role]/
 10. Save to: resumes/[Company]_[Role]/[Company]_[Role]_resume.md
-11. SELF-CHECK before saving: scan the markdown and confirm Projects section appears BEFORE Experience section. If Experience appears first, rewrite the file with correct order before proceeding.
+11. SELF-CHECK before saving: scan the markdown and confirm the section order is Summary → Education → Projects → Experience → Technical Skills. If any section is out of order (e.g. Skills before Projects, or Experience before Projects), rewrite the file with the correct order before proceeding.
 12. Print to user: [Agent 2 complete] Resume tailored for [Job Title] at [Company]
 
 ### STEP 4 — PDF Conversion (automatic)
@@ -175,6 +178,7 @@ Would you like a cover letter for this role? (yes / no)
 ## CANDIDATE CONTEXT
 
 - Name: Kenya Sayles Jr.
+- Status: Computer Science graduate (degree completed May 2026). Use graduate framing in all output — never "student", "graduating", or "expected May 2026".
 - Degree: BS Computer Science, May 2026 — University of Texas at Dallas
 - Previous degree: AS Computer Science, Dallas College (2022–2024)
 - Background: U.S. Marine Corps Military Police Officer, MOS 5811 (July 2018 – July 2022, Okinawa, Japan) — Honorable Discharge
@@ -203,9 +207,10 @@ Would you like a cover letter for this role? (yes / no)
 
 ## RESUME OUTPUT FORMAT
 
-SECTION ORDER — this order is mandatory for a new CS grad with no CS work experience.
-Projects come BEFORE Experience. This puts your CS proof in front of the recruiter
-before they reach the military background.
+SECTION ORDER — this order is mandatory: Summary → Education → Projects → Experience → Technical Skills.
+Education sits near the top because the degree is the qualifying credential. Projects stay in the top
+half as the primary evidence of ability, above Experience (where the military background lives). The
+skills list goes last — it is a low-trust signal, and ATS parses keywords regardless of placement.
 
 Use this exact markdown structure:
 
@@ -213,13 +218,16 @@ Use this exact markdown structure:
 210-380-6693 | kenya.sayjr@gmail.com | linkedin.com/in/kenya-sayles-jr | github.com/KoderKid94 | Dallas, TX
 
 ## Summary
-[2-3 sentences. Opens with exact job title from JD. Keyword-loaded. Connects military + CS background.]
+[2-3 sentences. Opens with exact job title from JD. Keyword-loaded. Frames the candidate as a Computer Science graduate (degree completed May 2026), connecting the CS background with military leadership. Use graduate framing — never "student" or "graduating".]
 
-## Technical Skills
-**Languages:** [mirror JD language exactly]
-**Frameworks & Tools:** [mirror JD language exactly]
-**Databases:** [relevant ones]
-**Concepts:** [mirror JD language exactly]
+## Education
+
+### The University of Texas at Dallas — Dallas, TX
+**BS Computer Science** | Aug. 2024 – May 2026
+Relevant Coursework: [only courses that match JD requirements]
+
+### Dallas College — Dallas, TX
+**AS Computer Science** | Oct. 2022 – Aug. 2024
 
 ## Projects
 
@@ -243,14 +251,11 @@ Use this exact markdown structure:
 - [Bullet tailored to JD — quantified]
 - [Bullet tailored to JD — quantified]
 
-## Education
-
-### The University of Texas at Dallas — Dallas, TX
-**BS Computer Science** | Aug. 2024 – May 2026
-Relevant Coursework: [only courses that match JD requirements]
-
-### Dallas College — Dallas, TX
-**AS Computer Science** | Oct. 2022 – Aug. 2024
+## Technical Skills
+**Languages:** [mirror JD language exactly]
+**Frameworks & Tools:** [mirror JD language exactly]
+**Databases:** [relevant ones]
+**Concepts:** [mirror JD language exactly]
 
 ---
 

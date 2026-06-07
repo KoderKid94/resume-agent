@@ -78,12 +78,20 @@ If you don't know exact numbers, use ranges or approximations ("~50", "10+", "3x
 
 ## ATS KEYWORD PLACEMENT STRATEGY
 
-Best placement for keyword scoring (highest to lowest weight):
-1. **Job title / headline** in summary
-2. **Skills section** — explicit list
-3. **First bullet point** of each experience entry
-4. **Project descriptions**
+Most ATS parse keywords across the entire document — section *placement* does
+not materially change whether a keyword is matched. What matters is presence,
+exact phrasing, and reinforcement (a keyword appearing in more than one place):
+
+1. **Job title / headline** in summary — match the exact JD title
+2. **Skills section** — explicit list (matched wherever the section sits; this
+   resume places it last by design — see section-order decision in CLAUDE.md)
+3. **First bullet point** of each experience/project entry
+4. **Project descriptions** — the strongest place to *demonstrate* a keyword, not just list it
 5. Later bullets
+
+Because matching is placement-agnostic, section ORDER is a human-reader decision,
+not an ATS one: lead with the qualifying credential (Education) and demonstrated
+work (Projects), and keep the low-trust skills list at the bottom.
 
 ---
 

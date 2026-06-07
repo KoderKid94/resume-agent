@@ -2,7 +2,7 @@
 
 An agentic resume-tailoring system built on Claude Code that transforms a single master resume into ATS-optimized, job-specific resumes and cover letters — one-page guaranteed, scored, and iterated until it clears an 85/100 threshold.
 
-Built by a graduating CS student to solve my own job-search problem: **how do you apply to 100+ roles without either (a) spraying the same resume everywhere or (b) burning an hour per application manually rewriting bullets?**
+Built by a new CS graduate to solve my own job-search problem: **how do you apply to 100+ roles without either (a) spraying the same resume everywhere or (b) burning an hour per application manually rewriting bullets?**
 
 ---
 
@@ -81,7 +81,7 @@ Parses the job description into structured data. Captures exact keyword phrases 
 **Agent 2 — Resume Tailor**
 Reads `reference/master_resume.md` and produces the tailored version. Hard constraints:
 - Never invents experience — pulls only from the master
-- Follows mandatory section order: **Summary → Technical Skills → Projects → Experience → Education**
+- Follows mandatory section order: **Summary → Education → Projects → Experience → Technical Skills**
 - Injects JD keywords using exact phrasing where possible
 - Quantifies every bullet that can be quantified (scale, %, count, outcome)
 - Targets one page
@@ -192,7 +192,7 @@ Review the PDF, edit if needed (the Markdown source is always regenerable), and 
 
 ## Design Decisions Worth Calling Out
 
-**Projects before Experience, always.** Standard resume advice puts Experience first. That advice was written for people with relevant work history. For a new grad whose strongest evidence of ability is a capstone, a TCP multiplayer game, and an AI search-algorithms project that scored 104/100, burying that under "Military Police Officer, 2018–2022" is leaving the most relevant content below the fold. The pipeline enforces Projects above Experience regardless of what a generic best-practice guide says.
+**Section order: Summary → Education → Projects → Experience → Technical Skills.** Standard resume advice puts Experience first and Skills near the top. That advice was written for people with relevant work history. As a new grad, the qualifying credential is the degree — so Education sits directly under the Summary, where a recruiter can verify the degree and grad date in one glance. Projects stay in the top half because they're the strongest evidence of ability — a capstone, a TCP multiplayer game, and an AI search-algorithms project that scored 104/100 — and they outrank Experience (where the military background lives). The skills list moves to the bottom: a self-reported list is a low-trust signal next to demonstrated work, and it costs nothing to deprioritize because ATS parses keywords regardless of where they appear. The pipeline enforces this order regardless of what a generic best-practice guide says. *(Order decision: 2026-06-06; superseded the earlier Summary → Technical Skills → Projects → Experience → Education layout.)*
 
 **Exact-phrase keyword matching, not synonyms.** ATS systems do literal matching on most criteria. If the JD says "RESTful APIs," the resume says "RESTful APIs" — not "REST services" or "HTTP APIs." Agent 2 preserves the JD's exact wording and lets the candidate's actual work speak for itself underneath.
 
